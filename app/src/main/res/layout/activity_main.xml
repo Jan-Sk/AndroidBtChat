@@ -12,27 +12,30 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.2"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Not Connected" />
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:text="nie polaczon" />
 
         <Button
             android:id="@+id/btn_connect"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="179dp"
+            android:layout_height="match_parent"
             android:layout_marginTop="10dp"
-            android:text="Connect" />
+            android:text="polacz" />
     </LinearLayout>
 
     <ListView
         android:id="@+id/list"
+        style="@android:style/Widget.ExpandableListView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.7" />
+        android:layout_weight="0.7"
+        android:cacheColorHint="#FF9800" />
 
 
     <LinearLayout
@@ -49,17 +52,19 @@
             android:layout_weight="0.8">
 
             <EditText
+                style="@android:style/Widget.Holo.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Input some text" />
+                android:hint="napisz wiadomosc" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/btn_send"
-            android:layout_width="0dp"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="0.2"
-            android:text="send" />
+            android:text="wyslij" />
     </LinearLayout>
 </LinearLayout>

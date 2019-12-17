@@ -31,7 +31,7 @@ import java.io.OutputStream;
 import java.util.UUID;
 
 public class ChatController {
-    private static final String APP_NAME = "BluetoothChatApp";
+    private static final String APP_NAME = "BT chat";
     private static final UUID MY_UUID = UUID.fromString("8ce255c0-200a-11e0-ac64-0800200c9a66");
 
     private final BluetoothAdapter bluetoothAdapter;
@@ -173,7 +173,7 @@ public class ChatController {
     private void connectionFailed() {
         Message msg = handler.obtainMessage(MainActivity.MESSAGE_TOAST);
         Bundle bundle = new Bundle();
-        bundle.putString("toast", "Unable to connect device");
+        bundle.putString("toast", "nie mozna polaczyc");
         msg.setData(bundle);
         handler.sendMessage(msg);
 
@@ -184,7 +184,7 @@ public class ChatController {
     private void connectionLost() {
         Message msg = handler.obtainMessage(MainActivity.MESSAGE_TOAST);
         Bundle bundle = new Bundle();
-        bundle.putString("toast", "Device connection was lost");
+        bundle.putString("toast", "utracono polaczenie");
         msg.setData(bundle);
         handler.sendMessage(msg);
 

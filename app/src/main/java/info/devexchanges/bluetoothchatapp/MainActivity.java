@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         //check device support bluetooth or not
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
-            Toast.makeText(this, "Bluetooth is not available!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Bluetooth jest niedostepny", Toast.LENGTH_SHORT).show();
             finish();
         }
 
@@ -83,16 +83,16 @@ public class MainActivity extends AppCompatActivity {
                 case MESSAGE_STATE_CHANGE:
                     switch (msg.arg1) {
                         case ChatController.STATE_CONNECTED:
-                            setStatus("Connected to: " + connectingDevice.getName());
+                            setStatus("polaczono do: " + connectingDevice.getName());
                             btnConnect.setEnabled(false);
                             break;
                         case ChatController.STATE_CONNECTING:
-                            setStatus("Connecting...");
+                            setStatus("laczenie");
                             btnConnect.setEnabled(false);
                             break;
                         case ChatController.STATE_LISTEN:
                         case ChatController.STATE_NONE:
-                            setStatus("Not connected");
+                            setStatus("nie polaczono");
                             break;
                     }
                     break;
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case MESSAGE_DEVICE_OBJECT:
                     connectingDevice = msg.getData().getParcelable(DEVICE_OBJECT);
-                    Toast.makeText(getApplicationContext(), "Connected to " + connectingDevice.getName(),
+                    Toast.makeText(getApplicationContext(), "polaczono z " + connectingDevice.getName(),
                             Toast.LENGTH_SHORT).show();
                     break;
                 case MESSAGE_TOAST:
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
     private void showPrinterPickDialog() {
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.layout_bluetooth);
-        dialog.setTitle("Bluetooth Devices");
+        dialog.setTitle("urzacdzenia bluetooth");
 
         if (bluetoothAdapter.isDiscovering()) {
             bluetoothAdapter.cancelDiscovery();
@@ -223,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (inputLayout.getEditText().getText().toString().equals("")) {
-                    Toast.makeText(MainActivity.this, "Please input some texts", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "blad", Toast.LENGTH_SHORT).show();
                 } else {
                     sendMessage(inputLayout.getEditText().getText().toString());
                     inputLayout.getEditText().setText("");
@@ -238,7 +238,6 @@ public class MainActivity extends AppCompatActivity {
                 if (resultCode == Activity.RESULT_OK) {
                     chatController = new ChatController(this, handler);
                 } else {
-                    Toast.makeText(this, "Bluetooth still disabled, turn off application!", Toast.LENGTH_SHORT).show();
                     finish();
                 }
         }
@@ -246,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void sendMessage(String message) {
         if (chatController.getState() != ChatController.STATE_CONNECTED) {
-            Toast.makeText(this, "Connection was lost!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "utracono polaczenie", Toast.LENGTH_SHORT).show();
             return;
         }
 
